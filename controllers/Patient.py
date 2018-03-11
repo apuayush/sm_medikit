@@ -26,9 +26,7 @@ class PatientHandler(RequestHandler):
 
         doc = {'uid':uid, 'pname': pname, 'gps': gps, 'description': description, 'image': image}
 
-        # fb.post('/livePatient', doc)
-        #
-        # res = fb.get('/history', int(uid))
+        add_patient(doc)
 
         if res == None:
             res = dict()

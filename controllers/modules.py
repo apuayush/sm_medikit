@@ -34,9 +34,3 @@ db = firestore.client()
 def add_patient(doc):
     doc_ref = db.collection('emergency').document()
     doc_ref.set(doc)
-
-add_patient({'uid': 123412341234,
-             'description': 'Mango High',
-             'gps': [110.64, 89.01],
-             'pname': 'Amrut'
-             })
