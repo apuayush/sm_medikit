@@ -16,7 +16,7 @@ for _ in range(40):
         val[i] = 0
     ans.append(val)
 
-print ans[:2]
+print(ans[:2])
 with open("clustering_dataset.csv", 'w') as f:
     a = csv.writer(f, delimiter=',')
     a.writerows(ans)

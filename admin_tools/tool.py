@@ -52,8 +52,9 @@ class bst_cancer(Main):
 
     def predict(self, details):
         self.load_model()
-        pred = self.model.predict(details)
+        pred = self.model.predict_proba(details)
         print(pred)
+
 
     def output(self):
         details = list()
