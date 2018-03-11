@@ -14,7 +14,7 @@ class LoginHandler(RequestHandler):
         password = self.get_argument('password')
         print(password)
 
-        doc = yield db.doc_details.find_one({'uid': int(uid)}, {'_id': 0})
+        doc = yield db1.doc_details.find_one({'uid': int(uid)}, {'_id': 0})
 
         if doc is None:
             self.write(json.dumps(dict(
@@ -66,12 +66,12 @@ class ProfileViewer(RequestHandler):
     def post(self):
         token = self.get_argument('token')
 
-        token_from_db = yield db.token.find_one({'token': token})
+        token_from_db = yield db1.token.find_one({'token': token})
         if token_from_db is None:
             self.write_error(401, "unauthorized token")
 
         else:
-            profile = yield db.doc_details.find_one({'uid': int(token_from_db['uid'])}, {'_id': 0})
+            profile = yield db1.doc_details.find_one({'uid': int(token_from_db['uid'])}, {'_id': 0})
             json_data = {
                 'name': profile['name'],
                 'uid': profile['uid']
@@ -107,7 +107,7 @@ class LogoutHandler(RequestHandler):
     def post(self):
         token = self.get_argument("token")
 
-        db.token.remove({"token": token})
+        db1.token.remove({"token": token})
         self.write({"status": 200, "msg": "successful"})
 
     def options(self):
