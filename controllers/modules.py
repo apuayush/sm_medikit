@@ -5,6 +5,8 @@ from tornado.ioloop import IOLoop
 from tornado.options import parse_command_line
 from tornado.gen import coroutine
 
+import numpy as np
+import _pickle as pickle
 import requests
 import jwt
 import time
@@ -27,7 +29,7 @@ try:
 except:
     pass
 
-from motor import MotorClient
+import motor.motor_asyncio
 import xmltodict
 
 from firebase import firebase
@@ -48,7 +50,7 @@ else:
     DB_link = env.db
     fb = env.fb
 
-db1 = MotorClient(DB_link)['sm_medikit']
+db1 = motor.motor_asyncio.AsyncIOMotorClient(DB_link)['sm_medikit']
 fb = firebase.FirebaseApplication(env.fb)
 
 
