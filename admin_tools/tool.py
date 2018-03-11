@@ -1,5 +1,5 @@
 import sys
-import _pickle as pk
+import pickle as pk
 import numpy as np
 # machine learning libraries
 
@@ -57,6 +57,9 @@ class Bst_cancer(Main):
         print(pred)
 
     def output(self):
+
+        out.delete(0, 'end')
+
         details = list()
         details.append(float(radius_mean.get()))
         details.append(float(texture_mean.get()))
@@ -68,8 +71,23 @@ class Bst_cancer(Main):
         details.append(float(concave.get()))
         details.append(float(symmetry_mean.get()))
         details.append(float(fractal_dimension_mean.get()))
+
+        radius_mean.delete(0, 'end')
+        texture_mean.delete(0, 'end')
+        perimeter_mean.delete(0, 'end')
+        area_mean.delete(0, 'end')
+        smoothness_mean.delete(0, 'end')
+        compactness_mean.delete(0, 'end')
+        concavity_mean.delete(0, 'end')
+        concavity_mean.delete(0, 'end')
+        concave.delete(0, 'end')
+        symmetry_mean.delete(0, 'end')
+        fractal_dimension_mean.delete(0, 'end')
+
         self.predict(details)
         print(np.array(details))
+        #convert details to string
+        out.insert(0, str(details))
         return details
 
 if __name__ == '__main__':
@@ -88,6 +106,7 @@ if __name__ == '__main__':
     Label(main, text="concave points_mean", font=fnt).grid(row=7, column=0)
     Label(main, text="symmetry_mean", font=fnt).grid(row=8, column=0)
     Label(main, text="fractal_dimension_mean", font=fnt).grid(row=9, column=0)
+    Label(main, text="Output", font=fnt).grid(row=11, column=0)
 
     radius_mean = Entry(main, font=fnt)
     radius_mean.grid(row=0, column=1)
@@ -109,6 +128,8 @@ if __name__ == '__main__':
     symmetry_mean.grid(row=8, column=1)
     fractal_dimension_mean = Entry(main, font=fnt)
     fractal_dimension_mean.grid(row=9, column=1)
+    out = Entry(main, font=fnt)
+    out.grid(row=11, column=1)
 
     Button(main, text='Quit', bg='red', font=fnt, command=main.destroy).\
         grid(row=10, column=0, sticky=W, pady=4)
