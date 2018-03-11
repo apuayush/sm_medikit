@@ -1,25 +1,29 @@
-<<<<<<< HEAD
 import pickle
-import motor
+import env
+import asyncio
+import motor.motor_asyncio
 
-client = motor.motor_asyncio.AsyncIOMotorClient()
+client = motor.motor_asyncio.AsyncIOMotorClient(env.db)
 db = client.sm_medikit
 
 async def find_in_cluster(cluster):
     coll = db['clustering_data']
     cur = coll.find()
-    from pprint import  pprint
-    for doc in await cur.to_list():
-        pprint(doc)
+
+    return await cur.to_list(10)
 
 
 def get_all_recommendations(features):
-    with open('internal/coll_filt/cf.pkl', 'rb') as f:
+    with open('../internal/coll_filt/cf.pkl', 'rb') as f:
         kmeans = pickle.load(f)
 
-    cluster = kmeans.evaluate(features)
+    cluster = kmeans.predict(features)
+    print(cluster)
 
+    loop = asyncio.get_event_loop()
 
-    # return objects
+    return find_in_cluster(10)
 
-find_in_cluster(2)
+get_all_recommendations([[0, 1, 0, 0, 0, 1, 1, 1, 1, 1]])
+
+# test case - 0, 1, 0, 0, 0, 1, 1, 1, 1, 1 out - 0
