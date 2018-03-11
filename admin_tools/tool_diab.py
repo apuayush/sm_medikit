@@ -12,36 +12,7 @@ else:
     from tkinter import *
 
 
-class Main(object):
-    def classification_model(model, data, predictors, outcome):
-        model.fit(data[predictors], data[outcome])
-        predictions = model.predict(data[predictors])
-        accuracy = metrics.accuracy_score(predictions, data[outcome])
-        print("Accuracy : %s" % "{0:.3%}".format(accuracy))
-
-        # k-fold cross-validation with 5 folds
-        kf = KFold(data.shape[0], n_folds=5)
-        error = []
-        for train, test in kf:
-            # Filter training data
-            train_predictors = (data[predictors].iloc[train, :])
-
-            # The target we're using to train the algorithm.
-            train_target = data[outcome].iloc[train]
-
-            # Training the algorithm using the predictors and target.
-            model.fit(train_predictors, train_target)
-
-            # Record error from each cross-validation run
-            error.append(model.score(data[predictors].iloc[test, :], data[outcome].iloc[test]))
-
-            print("Cross-Validation Score : %s" % "{0:.3%}".format(np.mean(error)))
-
-        # Fit the model again so that it can be refered outside the function:
-        model.fit(data[predictors], data[outcome])
-
-
-class diabetes(Main):
+class diabetes():
 
     def __init__(self):
         self.model = None
@@ -70,7 +41,6 @@ class diabetes(Main):
         details.append(float(BMI.get()))
         details.append(float(DiabetesPedigreeFunction.get()))
         details.append(float(Age.get()))
-        details.append(float(Outcome.get()))
 
         Pregnancies.delete(0, 'end')
         Glucose.delete(0, 'end')
@@ -81,15 +51,15 @@ class diabetes(Main):
         DiabetesPedigreeFunction.delete(0, 'end')
         DiabetesPedigreeFunction.delete(0, 'end')
         Age.delete(0, 'end')
-        Outcome.delete(0, 'end')
 
         pred = self.predict(np.array(details).reshape(1, -1))
         prob = pred[0,0]
 
         print(prob)
         #convert details to string
-        out.insert(0, str(prob * 100))
+        out.insert(0, str(np.ceil((1 - prob) * 100).astype(int)))
         return pred
+
 
 if __name__ == '__main__':
     bs = diabetes()
@@ -105,7 +75,6 @@ if __name__ == '__main__':
     Label(main, text="BMI", font=fnt).grid(row=5, column=0)
     Label(main, text="DiabetesPedigreeFunction", font=fnt).grid(row=6, column=0)
     Label(main, text="Age", font=fnt).grid(row=7, column=0)
-    Label(main, text="Outcome", font=fnt).grid(row=8, column=0)
     Label(main, text="probability", font=fnt).grid(row=10, column=0)
 
     Pregnancies = Entry(main, font=fnt)
@@ -124,8 +93,6 @@ if __name__ == '__main__':
     DiabetesPedigreeFunction.grid(row=6, column=1)
     Age = Entry(main, font=fnt)
     Age.grid(row=7, column=1)
-    Outcome = Entry(main, font=fnt)
-    Outcome.grid(row=8, column=1)
     out = Entry(main, font=fnt)
     out.grid(row=10, column=1)
 
