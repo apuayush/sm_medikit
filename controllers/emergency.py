@@ -10,9 +10,13 @@ class EmergencyHandler(RequestHandler):
         self.set_header("Access-Control-Allow-Origin", "*")
         self.set_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
 
+    def options(self):
+        # no body
+        self.set_status(204)
+        self.finish()
+
     # emergency admissions
     def post(self):
-        print(self.request.body.decode('utf-8'))
         data = json.loads(self.request.body.decode('utf-8'))
 
         # uid = self.get_argument('phone')

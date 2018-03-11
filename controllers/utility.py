@@ -58,8 +58,13 @@ def add_patient_emergency(doc):
 def get_nearest_hospital(gps):
     k = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + gps + "&radius=5000&type=hospital&key=AIzaSyCXi_HCK6GfPiY2YiDH6KKUh979oBrcU54"
     req = requests.get(k).json()
-    print(req)
     nearest_hosp = req['results'][0]['geometry']['location']
     # print(nearest_hosp)
     return nearest_hosp
 
+def post_stat(pid, stat):
+    coll = db.collection('patient').where('id', '==', pid).get()
+    id = list(coll)[0].id
+
+    doc = db.collection('livestat').document(id)
+    doc.update(stat)
