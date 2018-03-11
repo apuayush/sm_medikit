@@ -1,6 +1,5 @@
 from controllers.modules import *
 
-
 def setToken(user):
     """
     setting tokens and saving them on database
@@ -51,7 +50,7 @@ def validate(tid):
         tid = last
     return str(flag)
 
-def add_patient(doc):
+def add_patient_emergency(doc):
     doc_ref = db.collection('emergency').document()
     doc_ref.set(doc)
 
@@ -63,3 +62,4 @@ def get_nearest_hospital(gps):
     nearest_hosp = req['results'][0]['geometry']['location']
     # print(nearest_hosp)
     return nearest_hosp
+

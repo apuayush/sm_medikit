@@ -11,7 +11,6 @@ import requests
 import jwt
 import time
 import uuid
-import json
 import os
 import base64
 from datetime import datetime
@@ -19,8 +18,6 @@ from datetime import datetime
 from motor import MotorClient
 import json
 from bson import json_util
-import requests
-import xmltodict
 
 
 import os
@@ -29,10 +26,12 @@ try:
 except:
     pass
 
+<<<<<<< HEAD
 import motor.motor_asyncio
 import xmltodict
 
 from firebase import firebase
+
 
 # hash libraries
 from hashlib import sha256
@@ -49,6 +48,7 @@ else:
     PID = env.pid
     DB_link = env.db
     fb = env.fb
+
 
 db1 = motor.motor_asyncio.AsyncIOMotorClient(DB_link)['sm_medikit']
 fb = firebase.FirebaseApplication(env.fb)
