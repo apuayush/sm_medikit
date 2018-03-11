@@ -14,11 +14,9 @@ class PatientHandler(RequestHandler):
         uid = self.get_argument('uid')
         pname = self.get_argument('name')
         gps = self.get_argument('gps')
-
         gend = self.get_argument('gender')
         description = self.get_argument('description')
-
-        # image = self.get_argument('image')
+        image = self.get_argument('image')
 
         if len(uid) == 0:
             Un += 1
@@ -26,9 +24,11 @@ class PatientHandler(RequestHandler):
         if len(pname) == 0:
             pname = 'Unknown'
 
-        fb.post('/livePatient', {'uid':uid, 'pname': pname, 'gps': gps, 'description': description})
+        doc = {'uid':uid, 'pname': pname, 'gps': gps, 'description': description, 'image': image}
 
-        res = fb.get('/history',int(uid))
+        # fb.post('/livePatient', doc)
+        #
+        # res = fb.get('/history', int(uid))
 
         if res == None:
             res = dict()

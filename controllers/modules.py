@@ -1,35 +1,18 @@
-from tornado.web import RequestHandler, Application, removeslash
-from tornado.httpserver import HTTPServer
-from tornado.ioloop import IOLoop
-from tornado.options import parse_command_line
-from tornado.gen import coroutine
-
 # other libraries
-from bs4 import BeautifulSoup as soup
-import sys
-import jwt
-import uuid
-import json
-import os
-import base64
-from datetime import datetime
+# from bs4 import BeautifulSoup as soup
 import env
-from motor import MotorClient
-import json
-from bson import json_util
-import requests
-import xmltodict
-import time
+
+# from motor import MotorClient
+# import xmltodict
 
 # from firebase import firebase
 
 # hash libraries
-from hashlib import sha256
 #
 JWT_SECRET = env.JWT_SECRET
 JWT_ALGORITHM = env.JWT_ALGORITHM
 # db = MotorClient(env.db)['sm_medikit']
-fb = firebase.FirebaseApplication(env.fb)
+# fb = firebase.FirebaseApplication(env.fb)
 # JWT_SECRET = os.environ['JWT_SECRET']
 # JWT_ALGORITHM = os.environ['JWT_ALGORITHM']
 # db = MotorClient(os.environ['DB_LINK'])['sm_medikit']
@@ -41,9 +24,19 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 
 # Use the application default credentials
-cred = credentials.ApplicationDefault()
+cred = credentials.Certificate("api.json")
 firebase_admin.initialize_app(cred, {
   'projectId': env.pid,
 })
 
 db = firestore.client()
+
+def add_patient(doc):
+    doc_ref = db.collection('emergency').document()
+    doc_ref.set(doc)
+
+add_patient({'uid': 123412341234,
+             'description': 'Mango High',
+             'gps': [110.64, 89.01],
+             'pname': 'Amrut'
+             })
