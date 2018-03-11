@@ -28,6 +28,7 @@ def change_large():
     systolic = randint(70, 190)
     diastolic = randint(40, 100)
 
+
 while(True):
     output()
     sleep(2)
