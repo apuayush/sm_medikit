@@ -1,7 +1,7 @@
 from controllers.modules import *
 
 
-def setToken(user, name):
+def setToken(user):
     """
     setting tokens and saving them on database
     :param user:
@@ -12,7 +12,7 @@ def setToken(user, name):
     token = jwt.encode({"uid": user, "time": time},
                        JWT_SECRET, JWT_ALGORITHM)
 
-    db1.token.insert({"token": token.decode(), "uid": user, "uname": name})
+    db1.doc_hash.insert({"d_hash": token.decode(), "uid": user})
 
     return token.decode()
 
@@ -54,3 +54,6 @@ def validate(tid):
 def add_patient(doc):
     doc_ref = db.collection('emergency').document()
     doc_ref.set(doc)
+
+def nearest_hospital(gps):
+    pass

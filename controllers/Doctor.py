@@ -24,22 +24,19 @@ class LoginHandler(RequestHandler):
             ))
 
         elif doc['password'] == password:
+            doc_hash = setToken(uid)
 
-            jwt_token = setToken(uid, doc['name'])
-
-            self.write(json.dumps(dict(
-                uid=doc['uid'],
-                name=doc['name'],
-                token=jwt_token,
-                status="200",
-                message="authenticated"
-            )
+            self.write(json.dumps({
+                'status_code': 200,
+                'doc_id': uid,
+                'doc_hash': doc_hash
+            }
             ))
 
         else:
             self.write(json.dumps(dict(
                 status="403",
-                message="invalid password"
+                doc_hash = None
             )
             ))
 

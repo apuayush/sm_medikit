@@ -1,8 +1,3 @@
-from controllers.modules import *
-from controllers.utility import *
-
-
-Un = 0
 class PatientHandler(RequestHandler):
     def set_default_headers(self):
         print("setting headers!!!")
@@ -29,18 +24,12 @@ class PatientHandler(RequestHandler):
         doc = {'uid':uid, 'pname': pname, 'gps': gps, 'description': description, 'image': image}
         add_patient(doc)
 
-        res = fb.get('/history', int(uid))
-
-        if res == None:
-            res = dict()
-            res[int(uid)] = {'pname': pname, 'history':[], 'gender': gend}
-
-        res[int(uid)]['history'].append({'date':time.strftime("%Y-%m-%d %H:%M"), 'description':description,'gps': gps })
-        fb.post('/history',res)
+        # TODO - show closest hospital using maps api(Surya)
 
         jsonData = {
             'status': 200,
-            'message': 'successful! Help is on your way'
+            'message': 'successful! Help is on your way',
+            'hosp_gps': []
         }
         self.write(json.dumps(jsonData))
 
