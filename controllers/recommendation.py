@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import pickle
 import motor
 

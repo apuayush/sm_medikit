@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f96c2aa8-05c5-4695-8108-e3d602f19794" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_tools/tool_diab.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controllers/.~lock.api.json#" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controllers/api.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/Patient.py" afterPath="$PROJECT_DIR$/controllers/Patient.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/modules.py" afterPath="$PROJECT_DIR$/controllers/modules.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/recommendation.py" afterPath="$PROJECT_DIR$/controllers/recommendation.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/internal/bst_cancer/bst_cancer.ipynb" afterPath="$PROJECT_DIR$/internal/bst_cancer/bst_cancer.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/internal/diabetes/diabetes.ipynb" afterPath="$PROJECT_DIR$/internal/diabetes/diabetes.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/utility.py" afterPath="$PROJECT_DIR$/controllers/utility.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,10 +40,13 @@
       <file leaf-file-name="Patient.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/Patient.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-119">
-              <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+            <state relative-caret-position="-85">
+              <caret line="28" column="31" lean-forward="false" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
+                <marker date="1520766786048" expanded="true" signature="1000:1100" ph="..." />
+                <marker date="1520766786048" expanded="true" signature="1276:1369" ph="..." />
+                <marker date="1520766786048" expanded="true" signature="1453:1660" ph="..." />
               </folding>
             </state>
           </provider>
@@ -46,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -65,9 +75,11 @@
       <file leaf-file-name="modules.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/modules.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="995">
+              <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+              <folding>
+                <element signature="e#20#84#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,10 +99,10 @@
       <file leaf-file-name="recommendation.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/recommendation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+            <state relative-caret-position="162">
+              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
-                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#13#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -405,28 +417,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/modules.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/Patient.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+        <state relative-caret-position="-85">
+          <caret line="28" column="31" lean-forward="false" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
+            <marker date="1520766786048" expanded="true" signature="1000:1100" ph="..." />
+            <marker date="1520766786048" expanded="true" signature="1276:1369" ph="..." />
+            <marker date="1520766786048" expanded="true" signature="1453:1660" ph="..." />
           </folding>
         </state>
       </provider>
@@ -473,12 +480,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/modules.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="995">
+          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding>
+            <element signature="e#20#84#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/recommendation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+        <state relative-caret-position="162">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#13#26#0" expanded="true" />
           </folding>
         </state>
       </provider>

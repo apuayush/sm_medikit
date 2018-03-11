@@ -51,3 +51,6 @@ def validate(tid):
         tid = last
     return str(flag)
 
+def add_patient(doc):
+    doc_ref = db.collection('emergency').document()
+    doc_ref.set(doc)
