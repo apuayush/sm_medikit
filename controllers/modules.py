@@ -5,6 +5,7 @@ from tornado.ioloop import IOLoop
 from tornado.options import parse_command_line
 from tornado.gen import coroutine
 
+import requests
 import jwt
 import time
 import uuid
