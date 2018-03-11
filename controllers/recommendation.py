@@ -9,4 +9,3 @@ def get_all_recommendations(features):
     # find all users with cluster in database
     # return objects
 
-get_all_recommendations([1,2,3])
