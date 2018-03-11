@@ -1,19 +1,77 @@
+import sys
+import _pickle as pk
+import numpy as np
+# machine learning libraries
 
-class bst_cancer:
+from sklearn.cross_validation import KFold   #For K-fold cross validation
+from sklearn.ensemble import RandomForestClassifier
 
-    def output():
-        print "out"
-        radius_mean_val = float(radius_mean.get())
-        texture_mean_val = float(texture_mean.get())
-        perimeter_mean_val = float(perimeter_mean.get())
-        area_mean_val = float(area_mean.get())
-        smoothness_mean_val = float(smoothness_mean.get())
-        compactness_mean_val = float(compactness_mean.get())
-        concavity_mean_val = float(concavity_mean.get())
-        concave_val = float(concave.get())
-        symmetry_mean_val = float(symmetry_mean.get())
-        fractal_dimension_mean_val = float(fractal_dimension_mean.get())
+if sys.version_info[0] < 3:
+    from Tkinter import *
+else:
+    from tkinter import *
 
+class Main(object):
+    def classification_model(model, data, predictors, outcome):
+        model.fit(data[predictors], data[outcome])
+        predictions = model.predict(data[predictors])
+        accuracy = metrics.accuracy_score(predictions, data[outcome])
+        print("Accuracy : %s" % "{0:.3%}".format(accuracy))
+
+        # k-fold cross-validation with 5 folds
+        kf = KFold(data.shape[0], n_folds=5)
+        error = []
+        for train, test in kf:
+            # Filter training data
+            train_predictors = (data[predictors].iloc[train, :])
+
+            # The target we're using to train the algorithm.
+            train_target = data[outcome].iloc[train]
+
+            # Training the algorithm using the predictors and target.
+            model.fit(train_predictors, train_target)
+
+            # Record error from each cross-validation run
+            error.append(model.score(data[predictors].iloc[test, :], data[outcome].iloc[test]))
+
+            print("Cross-Validation Score : %s" % "{0:.3%}".format(np.mean(error)))
+
+        # Fit the model again so that it can be refered outside the function:
+        model.fit(data[predictors], data[outcome])
+
+
+class bst_cancer(Main):
+
+    def __init__(self):
+        self.model = None
+
+    def load_model(self):
+        with open('../internal/bst_cancer/bst_cancer.pickle', 'rb') as f:
+            pk.load(self.model,f)
+
+
+    def predict(self, details):
+        self.load_model()
+        self.model.predict(details)
+
+    def output(self):
+        details = []
+        details.append(float(radius_mean.get()))
+        details.append(float(texture_mean.get()))
+        details.append(float(perimeter_mean.get()))
+        details.append(float(area_mean.get()))
+        details.append(float(smoothness_mean.get()))
+        details.append(float(compactness_mean.get()))
+        details.append(float(concavity_mean.get()))
+        details.append(float(concave.get()))
+        details.append(float(symmetry_mean.get()))
+        details.append(float(fractal_dimension_mean.get()))
+        self.predict(details)
+        print(np.array(details))
+        return details
+
+if __name__ == '__main__':
+    bs = bst_cancer()
     main = Tk()
     main.resizable(0, 0)
     fnt = (None, 20)
@@ -52,6 +110,6 @@ class bst_cancer:
 
     Button(main, text='Quit', bg='red', font=fnt, command=main.destroy).\
         grid(row=10, column=0, sticky=W, pady=4)
-    Button(main, text='Output',bg='green', font=fnt, command=output).\
+    Button(main, text='Output',bg='green', font=fnt, command=bs.output).\
         grid(row=10, column=1, sticky=W, pady=4)
     mainloop()
