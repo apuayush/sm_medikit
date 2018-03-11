@@ -1,6 +1,7 @@
 from random import randint
 from time import sleep
 from pprint import pprint
+from controllers.modules import *
 
 # Oxygen >95%
 # Respiratory rate 16 - 24
@@ -115,10 +116,24 @@ def oxy_value():
     out["oxygen_value"] = oxy
     out["oxy_msg"] = msg
 
+
+def post_stat(pid, stat):
+    coll = db.collection('patient').where('id', '==', pid).get()
+    id = list(coll)[0].id
+
+    doc = db.collection('livestat').document(id)
+    doc.update(stat)
+
+
+
 while(True):
     bp()
     pulse_value()
     resp_value()
     oxy_value()
     pprint(out)
-    sleep(2)
+
+    # request
+    post_stat(1, out)
+
+    sleep(1)
