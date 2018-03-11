@@ -47,15 +47,16 @@ class bst_cancer(Main):
 
     def load_model(self):
         with open('../internal/bst_cancer/bst_cancer.pickle', 'rb') as f:
-            pk.load(self.model,f)
+            self.model = pk.load(f)
 
 
     def predict(self, details):
         self.load_model()
-        self.model.predict(details)
+        pred = self.model.predict(details)
+        print(pred)
 
     def output(self):
-        details = []
+        details = list()
         details.append(float(radius_mean.get()))
         details.append(float(texture_mean.get()))
         details.append(float(perimeter_mean.get()))
