@@ -7,11 +7,15 @@ class LoginHandler(RequestHandler):
         print("setting headers!!!")
         self.set_header("Access-Control-Allow-Origin", "*")
         self.set_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+        self.set_header('')
 
     @coroutine
     def post(self):
-        uid = self.get_argument('uid')
-        password = self.get_argument('password')
+        data = json.loads(self.request.body.decode('utf-8'))
+        uid = data.get('data')
+        password = data.get('password')
+        # uid = self.get_argument('uid')
+        # password = self.get_argument('password')
         print(password)
 
         doc = yield db1.doc_details.find_one({'uid': int(uid)}, {'_id': 0})

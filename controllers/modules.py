@@ -19,10 +19,7 @@ from bson import json_util
 
 
 import os
-try:
-    import env
-except:
-    pass
+from controllers import env
 
 from motor import MotorClient
 
