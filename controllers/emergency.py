@@ -1,9 +1,15 @@
 from controllers.modules import *
 from controllers.utility import *
+from tornado_cors import CorsMixin
 
 
-
-class EmergencyHandler(RequestHandler):
+class EmergencyHandler(CorsMixin, RequestHandler):
+    CORS_ORIGIN = '*'
+    CORS_HEADERS = 'Content-Type'
+    CORS_METHODS = 'POST'
+    CORS_CREDENTIALS = True
+    CORS_MAX_AGE = 21600
+    CORS_EXPOSE_HEADERS = 'Location, X-WP-TotalPages'
 
     def set_default_headers(self):
         print("setting headers!!!")
