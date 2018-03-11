@@ -1,8 +1,16 @@
 from random import randint
 from time import sleep
 from pprint import pprint
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 
-from controllers import modules
+cred = credentials.Certificate("../controllers/api.json")
+firebase_admin.initialize_app(cred, {
+    'projectId': 'smmedikit',
+})
+
+db = firestore.client()
 
 # Oxygen >95%
 # Respiratory rate 16 - 24
@@ -119,17 +127,9 @@ def oxy_value():
 
 
 def post_stat(pid, stat):
-    import firebase_admin
-    from firebase_admin import credentials
-    from firebase_admin import firestore
+
 
     # Use the application default credentials
-    cred = credentials.Certificate("../controllers/api.json")
-    firebase_admin.initialize_app(cred, {
-        'projectId': 'smmedikit',
-    })
-
-    db = firestore.client()
 
     coll = db.collection('patient').where('id', '==', pid).get()
     id = list(coll)[0].id
