@@ -73,4 +73,10 @@ db = firestore.client()
 
 Un = 1 # Unknown uid
 
+# JWT_SECRET = os.environ['JWT_SECRET']
+# JWT_ALGORITHM = os.environ['JWT_ALGORITHM']
+# db = MotorClient(os.environ['db'])['sm_medikit']
+
+Un = 1 # Unknown uid
+
 

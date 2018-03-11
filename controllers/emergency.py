@@ -2,6 +2,7 @@ from controllers.modules import *
 from controllers.utility import *
 
 
+
 class EmergencyHandler(RequestHandler):
 
     def set_default_headers(self):
@@ -16,12 +17,15 @@ class EmergencyHandler(RequestHandler):
         gps = self.get_argument('gps')
         gend = self.get_argument('gender')
         description = self.get_argument('description')
+
+
         image = self.get_argument('image')
 
         if len(uid) == 0:
             Un += 1
 
             uid = '0' * (10 - len(str(Un))) + str(int(Un))
+
         if len(pname) == 0:
             pname = 'Unknown'
 
@@ -33,11 +37,6 @@ class EmergencyHandler(RequestHandler):
             'image': image
         }
 
-            uid = '0' * (10-len(str(Un))) + str(int(Un))
-        if len(pname) == 0:
-            pname = 'Unknown'
-
-        fb.post('/livePatient', {'phone':uid, 'pname': pname, 'gps': gps, 'description': description})
 
         add_patient(doc)
 
