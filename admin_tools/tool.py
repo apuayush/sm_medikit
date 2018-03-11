@@ -11,6 +11,7 @@ if sys.version_info[0] < 3:
 else:
     from tkinter import *
 
+
 class Main(object):
     def classification_model(model, data, predictors, outcome):
         model.fit(data[predictors], data[outcome])
@@ -40,7 +41,7 @@ class Main(object):
         model.fit(data[predictors], data[outcome])
 
 
-class bst_cancer(Main):
+class Bst_cancer(Main):
 
     def __init__(self):
         self.model = None
@@ -72,7 +73,7 @@ class bst_cancer(Main):
         return details
 
 if __name__ == '__main__':
-    bs = bst_cancer()
+    bs = Bst_cancer()
     main = Tk()
     main.resizable(0, 0)
     fnt = (None, 20)
