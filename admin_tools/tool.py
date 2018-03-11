@@ -56,6 +56,7 @@ class Bst_cancer(Main):
 
         return pred
 
+
     def output(self):
 
         out.delete(0, 'end')

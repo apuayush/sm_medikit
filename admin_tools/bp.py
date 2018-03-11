@@ -16,7 +16,7 @@ def output():
         msg = "Pre-high blood pressure"
     else:
         msg = "High blood pressure"
-    print str(systolic) + " / " + str(diastolic) + " " + msg
+    print(str(systolic) + " / " + str(diastolic) + " " + msg)
 
 def change_small():
     global systolic, diastolic
@@ -28,7 +28,7 @@ def change_large():
     systolic = randint(70, 190)
     diastolic = randint(40, 100)
 
-while(True):
+while True:
     output()
     sleep(2)
     val = randint(1, 100)
