@@ -12,14 +12,21 @@ class EmergencyHandler(RequestHandler):
 
     # emergency admissions
     def post(self):
-        uid = self.get_argument('phone')
-        pname = self.get_argument('name')
-        gps = self.get_argument('gps')
-        gend = self.get_argument('gender')
-        description = self.get_argument('description')
+        print(self.request.body.decode('utf-8'))
+        data = json.loads(self.request.body.decode('utf-8'))
 
+        # uid = self.get_argument('phone')
+        # pname = self.get_argument('name')
+        # gps = self.get_argument('gps')
+        # gend = self.get_argument('gender')
+        # description = self.get_argument('description')
 
-        image = self.get_argument('image')
+        uid = data['phone']
+        pname = data['name']
+        gps = data['gps']
+        gend = data['gender']
+        description = data['description']
+        image = data['image']
 
         if len(uid) == 0:
             Un += 1
@@ -38,7 +45,7 @@ class EmergencyHandler(RequestHandler):
         }
 
 
-        add_patient(doc)
+        # add_patient(doc)
 
         nearest_hosp = get_nearest_hospital(gps)
         # TODO - show closest hospital using maps api(Surya)

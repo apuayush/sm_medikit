@@ -24,13 +24,6 @@ import os
 from controllers import env
 
 import motor.motor_asyncio
-import xmltodict
-
-from firebase import firebase
-
-
-# hash libraries
-from hashlib import sha256
 
 if os.environ.get('production'):
     JWT_SECRET = os.environ['JWT_SECRET']
@@ -47,7 +40,6 @@ else:
 
 
 db1 = motor.motor_asyncio.AsyncIOMotorClient(DB_link)['sm_medikit']
-fb = firebase.FirebaseApplication(env.fb)
 
 
 Un = 1 # Unknown uid
