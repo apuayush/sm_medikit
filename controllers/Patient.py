@@ -8,6 +8,7 @@ class PatientHandler(RequestHandler):
         self.set_header("Access-Control-Allow-Origin", "*")
         self.set_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
 
+    # emergency admissions
     @coroutine
     def post(self):
         uid = self.get_argument('uid')
@@ -41,6 +42,17 @@ class PatientHandler(RequestHandler):
             'message': 'successful! Help is on your way'
         }
         self.write(json.dumps(jsonData))
+
+    @coroutine
+    def stats_feed(self):
+        uid = self.get_argument('uid')
+        pulse = self.get_argument('pulse')
+        heart = self.get_argument('heart')
+        bp = self.get_argument('bp')
+        oxygen = self.get_argument('oxygen')
+
+
+
 
     def write_error(self, status_code, message="Internal Server Error", **kwargs):
         jsonData = {

@@ -11,4 +11,3 @@ routes = [
     (r'/pat/call', Patient.PatientHandler)
 ]
 
-

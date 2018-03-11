@@ -1,5 +1,5 @@
 import sys
-import _pickle as pk
+import pickle as pk
 import numpy as np
 # machine learning libraries
 
@@ -10,6 +10,7 @@ if sys.version_info[0] < 3:
     from Tkinter import *
 else:
     from tkinter import *
+
 
 class Main(object):
     def classification_model(model, data, predictors, outcome):
@@ -40,7 +41,7 @@ class Main(object):
         model.fit(data[predictors], data[outcome])
 
 
-class bst_cancer(Main):
+class Bst_cancer(Main):
 
     def __init__(self):
         self.model = None
@@ -49,14 +50,17 @@ class bst_cancer(Main):
         with open('../internal/bst_cancer/bst_cancer.pickle', 'rb') as f:
             self.model = pk.load(f)
 
-
     def predict(self, details):
         self.load_model()
         pred = self.model.predict_proba(details)
-        print(pred)
+
+        return pred
 
 
     def output(self):
+
+        out.delete(0, 'end')
+
         details = list()
         details.append(float(radius_mean.get()))
         details.append(float(texture_mean.get()))
@@ -68,12 +72,29 @@ class bst_cancer(Main):
         details.append(float(concave.get()))
         details.append(float(symmetry_mean.get()))
         details.append(float(fractal_dimension_mean.get()))
-        self.predict(details)
-        print(np.array(details))
-        return details
+
+        radius_mean.delete(0, 'end')
+        texture_mean.delete(0, 'end')
+        perimeter_mean.delete(0, 'end')
+        area_mean.delete(0, 'end')
+        smoothness_mean.delete(0, 'end')
+        compactness_mean.delete(0, 'end')
+        concavity_mean.delete(0, 'end')
+        concavity_mean.delete(0, 'end')
+        concave.delete(0, 'end')
+        symmetry_mean.delete(0, 'end')
+        fractal_dimension_mean.delete(0, 'end')
+
+        pred = self.predict(np.array(details).reshape(1, -1))
+        prob = pred[0,0]
+
+        print(prob)
+        #convert details to string
+        out.insert(0, str(prob * 100))
+        return pred
 
 if __name__ == '__main__':
-    bs = bst_cancer()
+    bs = Bst_cancer()
     main = Tk()
     main.resizable(0, 0)
     fnt = (None, 20)
@@ -88,6 +109,7 @@ if __name__ == '__main__':
     Label(main, text="concave points_mean", font=fnt).grid(row=7, column=0)
     Label(main, text="symmetry_mean", font=fnt).grid(row=8, column=0)
     Label(main, text="fractal_dimension_mean", font=fnt).grid(row=9, column=0)
+    Label(main, text="probability", font=fnt).grid(row=11, column=0)
 
     radius_mean = Entry(main, font=fnt)
     radius_mean.grid(row=0, column=1)
@@ -109,9 +131,11 @@ if __name__ == '__main__':
     symmetry_mean.grid(row=8, column=1)
     fractal_dimension_mean = Entry(main, font=fnt)
     fractal_dimension_mean.grid(row=9, column=1)
+    out = Entry(main, font=fnt)
+    out.grid(row=11, column=1)
 
     Button(main, text='Quit', bg='red', font=fnt, command=main.destroy).\
-        grid(row=10, column=0, sticky=W, pady=4)
+        grid(row=12, column=1, sticky=W, pady=4)
     Button(main, text='Output',bg='green', font=fnt, command=bs.output).\
         grid(row=10, column=1, sticky=W, pady=4)
     mainloop()
