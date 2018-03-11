@@ -29,6 +29,8 @@ class PatientHandler(RequestHandler):
         doc = {'uid':uid, 'pname': pname, 'gps': gps, 'description': description, 'image': image}
         add_patient(doc)
 
+        res = fb.get('/history', int(uid))
+
         if res == None:
             res = dict()
             res[int(uid)] = {'pname': pname, 'history':[], 'gender': gend}
