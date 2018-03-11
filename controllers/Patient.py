@@ -2,6 +2,7 @@ from controllers.modules import *
 from controllers.utility import *
 
 
+Un = 0
 class PatientHandler(RequestHandler):
     def set_default_headers(self):
         print("setting headers!!!")
@@ -11,7 +12,7 @@ class PatientHandler(RequestHandler):
     # emergency admissions
     @coroutine
     def post(self):
-        uid = self.get_argument('uid')
+        uid = self.get_argument('phone')
         pname = self.get_argument('name')
         gps = self.get_argument('gps')
         gend = self.get_argument('gender')
@@ -20,12 +21,12 @@ class PatientHandler(RequestHandler):
 
         if len(uid) == 0:
             Un += 1
-            uid = '0' * (12-len(str(Un))) + str(int(Un))
+            uid = '0' * (10-len(str(Un))) + str(int(Un))
         if len(pname) == 0:
             pname = 'Unknown'
 
-        doc = {'uid':uid, 'pname': pname, 'gps': gps, 'description': description, 'image': image}
 
+        doc = {'uid':uid, 'pname': pname, 'gps': gps, 'description': description, 'image': image}
         add_patient(doc)
 
         if res == None:
