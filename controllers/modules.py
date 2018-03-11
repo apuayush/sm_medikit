@@ -47,7 +47,7 @@ else:
     DB_link = env.db
     fb = env.fb
 
-db = MotorClient(DB_link)['sm_medikit']
+db1 = MotorClient(DB_link)['sm_medikit']
 fb = firebase.FirebaseApplication(env.fb)
 
 
