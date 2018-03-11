@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # import pickle
 #
 # def get_all_recommendations(features):
