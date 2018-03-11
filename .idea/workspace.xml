@@ -2,14 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f96c2aa8-05c5-4695-8108-e3d602f19794" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sm_medikit.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c2c_nishant/sockets.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_tools/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_tools/utility.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controllers/Doctor.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controllers/Patient.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controllers/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controllers/modules.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controllers/utility.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/c2c_nishant/create_doctor.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/c2c_nishant/database.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/c2c_nishant/ecg.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/c2c_nishant/tool.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/internal/bst_cancer/bst_cancer.pickel" afterPath="$PROJECT_DIR$/internal/bst_cancer/bst_cancer.pickle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_tools/tool.py" afterPath="$PROJECT_DIR$/admin_tools/tool.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c2c_nishant/bp.py" afterPath="$PROJECT_DIR$/c2c_nishant/bp.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/routes.py" afterPath="$PROJECT_DIR$/routes/routes.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,9 +54,11 @@
       <file leaf-file-name="routes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="238">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding>
+                <marker date="1520747417767" expanded="true" signature="57:232" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -107,25 +118,12 @@
             <path>
               <item name="sm_medikit" type="b2602c69:ProjectViewProjectNode" />
               <item name="sm_medikit" type="462c0819:PsiDirectoryNode" />
-              <item name="internal" type="462c0819:PsiDirectoryNode" />
+              <item name="c2c_nishant" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sm_medikit" type="b2602c69:ProjectViewProjectNode" />
               <item name="sm_medikit" type="462c0819:PsiDirectoryNode" />
               <item name="internal" type="462c0819:PsiDirectoryNode" />
-              <item name="bst_cancer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sm_medikit" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sm_medikit" type="462c0819:PsiDirectoryNode" />
-              <item name="internal" type="462c0819:PsiDirectoryNode" />
-              <item name="coll_filt" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sm_medikit" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sm_medikit" type="462c0819:PsiDirectoryNode" />
-              <item name="internal" type="462c0819:PsiDirectoryNode" />
-              <item name="diabetes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sm_medikit" type="b2602c69:ProjectViewProjectNode" />
@@ -236,8 +234,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <marker date="1520747417767" expanded="true" signature="57:232" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c2c_nishant/bp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
