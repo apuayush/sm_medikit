@@ -21,10 +21,7 @@ from bson import json_util
 
 
 import os
-try:
-    import env
-except:
-    pass
+from controllers import env
 
 import motor.motor_asyncio
 import xmltodict

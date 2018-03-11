@@ -8,11 +8,13 @@ class LoginHandler(RequestHandler):
         print("setting headers!!!")
         self.set_header("Access-Control-Allow-Origin", "*")
         self.set_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+        self.set_header('')
 
 
     async def post(self):
         uid = self.get_argument('uid')
         password = self.get_argument('password')
+
         print(password)
 
         docs = db.collection('doctor').where('username', '==', uid).get()
