@@ -26,7 +26,6 @@ try:
 except:
     pass
 
-<<<<<<< HEAD
 import motor.motor_asyncio
 import xmltodict
 
@@ -67,4 +66,11 @@ firebase_admin.initialize_app(cred, {
 })
 
 db = firestore.client()
+
+# JWT_SECRET = os.environ['JWT_SECRET']
+# JWT_ALGORITHM = os.environ['JWT_ALGORITHM']
+# db = MotorClient(os.environ['db'])['sm_medikit']
+
+Un = 1 # Unknown uid
+
 

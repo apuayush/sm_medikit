@@ -3,6 +3,7 @@ from controllers.utility import *
 
 
 class EmergencyHandler(RequestHandler):
+
     def set_default_headers(self):
         print("setting headers!!!")
         self.set_header("Access-Control-Allow-Origin", "*")
@@ -19,6 +20,7 @@ class EmergencyHandler(RequestHandler):
 
         if len(uid) == 0:
             Un += 1
+
             uid = '0' * (10 - len(str(Un))) + str(int(Un))
         if len(pname) == 0:
             pname = 'Unknown'
@@ -30,6 +32,12 @@ class EmergencyHandler(RequestHandler):
             'description': description,
             'image': image
         }
+
+            uid = '0' * (10-len(str(Un))) + str(int(Un))
+        if len(pname) == 0:
+            pname = 'Unknown'
+
+        fb.post('/livePatient', {'phone':uid, 'pname': pname, 'gps': gps, 'description': description})
 
         add_patient(doc)
 
