@@ -50,11 +50,11 @@ class Bst_cancer(Main):
         with open('../internal/bst_cancer/bst_cancer.pickle', 'rb') as f:
             self.model = pk.load(f)
 
-
     def predict(self, details):
         self.load_model()
-        pred = self.model.predict(details)
-        print(pred)
+        pred = self.model.predict_proba(details)
+
+        return pred
 
     def output(self):
 
@@ -84,11 +84,13 @@ class Bst_cancer(Main):
         symmetry_mean.delete(0, 'end')
         fractal_dimension_mean.delete(0, 'end')
 
-        self.predict(details)
-        print(np.array(details))
+        pred = self.predict(np.array(details).reshape(1, -1))
+        prob = pred[0,0]
+
+        print(prob)
         #convert details to string
-        out.insert(0, str(details))
-        return details
+        out.insert(0, str(prob * 100))
+        return pred
 
 if __name__ == '__main__':
     bs = Bst_cancer()
@@ -106,7 +108,7 @@ if __name__ == '__main__':
     Label(main, text="concave points_mean", font=fnt).grid(row=7, column=0)
     Label(main, text="symmetry_mean", font=fnt).grid(row=8, column=0)
     Label(main, text="fractal_dimension_mean", font=fnt).grid(row=9, column=0)
-    Label(main, text="Output", font=fnt).grid(row=11, column=0)
+    Label(main, text="probability", font=fnt).grid(row=11, column=0)
 
     radius_mean = Entry(main, font=fnt)
     radius_mean.grid(row=0, column=1)
@@ -132,7 +134,7 @@ if __name__ == '__main__':
     out.grid(row=11, column=1)
 
     Button(main, text='Quit', bg='red', font=fnt, command=main.destroy).\
-        grid(row=10, column=0, sticky=W, pady=4)
+        grid(row=12, column=1, sticky=W, pady=4)
     Button(main, text='Output',bg='green', font=fnt, command=bs.output).\
         grid(row=10, column=1, sticky=W, pady=4)
     mainloop()
