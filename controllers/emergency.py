@@ -1,15 +1,10 @@
 from controllers.modules import *
 from controllers.utility import *
-from tornado_cors import CorsMixin
+from tornado.httputil import parse_body_arguments
+from urllib.parse import parse_qs
 
 
-class EmergencyHandler(CorsMixin, RequestHandler):
-    CORS_ORIGIN = '*'
-    CORS_HEADERS = 'Content-Type'
-    CORS_METHODS = 'POST'
-    CORS_CREDENTIALS = True
-    CORS_MAX_AGE = 21600
-    CORS_EXPOSE_HEADERS = 'Location, X-WP-TotalPages'
+class EmergencyHandler(RequestHandler):
 
     def set_default_headers(self):
         print("setting headers!!!")
@@ -25,7 +20,10 @@ class EmergencyHandler(CorsMixin, RequestHandler):
 
     # emergency admissions
     def post(self):
-        data = json.loads(self.request.body.decode('utf-8'))
+        print(self.request.body)
+        data = parse_qs(self.request.body)
+        print(data)
+        # data = json.loads(self.request.body.decode('utf-8'))
 
         # uid = self.get_argument('phone')
         # pname = self.get_argument('name')
@@ -33,12 +31,12 @@ class EmergencyHandler(CorsMixin, RequestHandler):
         # gend = self.get_argument('gender')
         # description = self.get_argument('description')
 
-        uid = data['phone']
-        pname = data['name']
-        gps = data['gps']
-        gend = data['gender']
-        description = data['description']
-        image = data['image']
+        uid = data[b'phone'][0].decode("utf-8")
+        pname = data[b'name'][0].decode("utf-8")
+        gps = data[b'gps'][0].decode("utf-8")
+        gend = data[b'gender'][0].decode("utf-8")
+        description = data[b'description'][0].decode("utf-8")
+        image = data[b'image'][0].decode("utf-8")
 
         if len(uid) == 0:
             Un += 1
@@ -53,8 +51,11 @@ class EmergencyHandler(CorsMixin, RequestHandler):
             'pname': pname,
             'gps': gps,
             'description': description,
-            'image': image
+            'image': image,
+            'gender': gend
         }
+
+        print(doc)
 
 
         # add_patient(doc)
