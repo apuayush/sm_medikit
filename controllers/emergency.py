@@ -20,9 +20,7 @@ class EmergencyHandler(RequestHandler):
 
     # emergency admissions
     def post(self):
-        print(self.request.body)
         # data = parse_qs(self.request.body.decode('utf-8'))
-        # print(data)
         data = json.loads(self.request.body.decode('utf-8'))
 
         # uid = self.get_argument('phone')
@@ -55,13 +53,10 @@ class EmergencyHandler(RequestHandler):
             'gender': gend
         }
 
-        print(doc)
 
-
-        # add_patient(doc)
+        add_patient_emergency(doc)
 
         nearest_hosp = get_nearest_hospital(gps)
-        # TODO - show closest hospital using maps api(Surya)
 
         print(nearest_hosp)
 

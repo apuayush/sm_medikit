@@ -54,7 +54,6 @@ def add_patient_emergency(doc):
     doc_ref = db.collection('emergency').document()
     doc_ref.set(doc)
 
-
 def get_nearest_hospital(gps):
     k = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + gps + "&radius=5000&type=hospital&key=AIzaSyCXi_HCK6GfPiY2YiDH6KKUh979oBrcU54"
     req = requests.get(k).json()
